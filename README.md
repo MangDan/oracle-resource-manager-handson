@@ -49,6 +49,7 @@ Resource Manager에서 사용할 Terraform Configuration을 포함하는 Zip 패
 
 Zip 패키지의 구조는 다음과 같습니다. HCL로 작성된 tf 파일들이 묶여 있는 것을 확인할 수 있습니다. tar.gz 파일은 Object Storage에 업로드 할 파일이며, .yaml 파일은 Oracle Resource Manager의 UI에서 변수의 값을 쉽게 할당해 주기 위한 포멧 입니다. (뒤에서 다시 설명)
 
+```
 .
 ├── oci-object-storage.zip
 │   ├── provider.tf
@@ -64,7 +65,7 @@ Zip 패키지의 구조는 다음과 같습니다. HCL로 작성된 tf 파일들
 ### STEP 2: Resource Manager Zip 패키지 이해 
 내용을 확인하기 위해서 다운로드 받은 Zip 압축 파일을 압축 해제합니다. 구조는 다음과 같습니다. 
 > 실제 Resource Manager에서 사용할 경우는 압축된 Zip파일을 사용합니다.
-```
+
 
 
 <details>
