@@ -64,8 +64,10 @@ Resource Manager에서 사용할 Terraform Configuration을 포함하는 Zip 패
 └──
 ```
 
-[참고1](https://docs.cloud.oracle.com/iaas/Content/API/SDKDocs/terraformconfig.htm)
-[참고2](https://docs.cloud.oracle.com/iaas/Content/ResourceManager/Concepts/terraformconfigresourcemanager.htm#schemadoc)
+<details>
+<summary>
+<i>참고) Resource Manager Zip 패키지 내용</i>
+</summary>
 
 **provider.tf**  
 > 클라우드 제공 벤더를 기술합니다. Oracle Cloud는 provider명은 **"oci"** 입니다. Resource Manager를 사용하면 tenancy_ocid만 지정해주면 됩니다. (로컬에서 사용할 경우 나머지 항목 모두 설정)
@@ -87,6 +89,10 @@ Resource Manager에서 사용할 Terraform Configuration을 포함하는 Zip 패
 
 **application.tar.gz**  
 > 본 실습에서는 Oracle Cloud에 Object Storage를 생성합니다. 생성된 Object Storage에 업로드할 실습용 샘플 파일입니다.
+
+</details>
+
+
 
 ### **STEP 3**: OCI Console 로그인
 > https://console.ap-seoul-1.oraclecloud.com 접속 > Tenant 입력 > **Continue** 클릭 > Oracle Cloud Infrastructure 아래 사용자 이름(User Name)과 암호(Password) 입력 > **Sign In** 클릭
@@ -151,6 +157,8 @@ Terraform의 주요 Action에는 Plan, Apply, Destroy가 있습니다. 모든 �
 
     ![](images/oci_rm_plan_job_complete.png)
 
+<font color="red">중요 참고) Log는 지속적으로 서버의 정보를 가져와 보여주도록 되어 있습니다. 이 과정에서 서버에 계속적인 요청이 가는데, 오랜 시간 로그 화면에 머물러 있을 경우 "" 라는 오류가 발생할 수 있습니다. 이는 리소스 생성 과정과 무관한 UI에 발생하는 Exception이므로 무시합니다. 다시 로그를 보고 싶으면 화면을 Refresh 합니다.</font>
+
 ### **STEP 6**: Resource Manager Apply Job 실행하여 인프라에 반영
 1. Terraform Configuration Apply Action
     > Terraform Actions > Apply 선택
@@ -201,7 +209,6 @@ Terraform과 Resource Manager를 활용하여 3-tier 웹 애플리케이션 운�
 **STEP 1**: Oracle Resource Manager에서 사용할 Zip 패키지 다운로드  
 **STEP 2**: OCI Console 로그인  
 **STEP 3**: Resource Manager Stack 생성  
-**STEP 4**: Resource Manager Plan Job 실행  
 **STEP 4**: Resource Manager Apply Job 실행  
 **STEP 5**: 생성된 OCI Resource와 웹 애프리케이션 배포 확인  
 **STEP 6**: 생성된 모든 리소스 삭제  
@@ -235,7 +242,7 @@ Resource Manager에서 사용할 Terraform Configuration과 웹 애플리케이�
 </details>
 
 ### **STEP 2**: OCI Console 로그인
-> https://console.ap-seoul-1.oraclecloud.com 접속 > Tenant 입력 > **Continue** 클릭 > Oracle Cloud Infrastructure 아래 사용자 이름(User Name)과 암호(Password) 입력 > **Sign In** 클릭
+> https://console.ap-seoul-1.oraclecloud.com 접속 (Ctrl키를 누른상태로 링크 클릭하여 새창으로 오픈합니다.) > Tenant 입력 > **Continue** 클릭 > Oracle Cloud Infrastructure 아래 사용자 이름(User Name)과 암호(Password) 입력 > **Sign In** 클릭
 
 ![](images/animated_gif/oci_console_login.gif)
 
@@ -261,22 +268,11 @@ Terraform Configuration과 웹 애플리케이션 소스를 포함하고 있는 
 
     ![](images/animated_gif/oci_menu_create_stacks_2.gif)
 
-### **STEP 4**: Resource Manager Plan Job 실행
-1. Terraform Configuration Plan Action
-    > Terraform Actions > Plan 선택
 
-    ![](images/animated_gif/oci_rm_plan_job.gif)
+### **STEP 4**: Resource Manager Apply Job 실행
+> 시간 관계상 PLAN 과정은 건너뜁니다.  
+> 많은 리소스가 동시에 생성이 되기 때문에 생성되는데 어느정도 시간이 소요됩니다. (대략 10~15분)
 
-2. Plan Job 실행 로그 확인
-
-    ![](images/animated_gif/oci_rm_plan_logs.gif)
-
-3. Plan Job 실행 결과 확인
-
-    ![](images/oci_rm_plan_job_complete.png)
-
-
-### **STEP 5**: Resource Manager Apply Job 실행
 1. Terraform Configuration Apply Action
     > Terraform Actions > Apply 선택
 
@@ -289,6 +285,15 @@ Terraform Configuration과 웹 애플리케이션 소스를 포함하고 있는 
 3. Job 실행 완료, 하단에 Load Balancer의 External IP를 확인
 
     ![](images/oci_rm_apply_job_complete.png)
+
+<details>
+<summary>
+<i>참고) 생성되는 주요 클라우드 리소스</i>
+</summary>
+
+![](images/resources.png)
+
+</details>
 
 ### **STEP 5**: 생성된 OCI Resource와 웹 애프리케이션 배포 확인
 1. Compute Instance 확인
@@ -350,7 +355,6 @@ STEP5에서와 동일하게 모든 OCI 리소스 확인
 
 
 </details> 
-
 
 ***
 
