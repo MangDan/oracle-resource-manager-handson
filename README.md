@@ -210,7 +210,7 @@ Terraform과 Resource Manager를 활용하여 3-tier 웹 애플리케이션 운�
 ***
 
 ### STEP 1: Oracle Resource Manager에서 사용할 Zip 패키지 다운로드
-Resource Manager에서 사용할 Terraform Configuration과 웹 애플리케이션 소스를 포함하는 Zip 패키지 파일 [mushop-basic-stack.zip](https://objectstorage.ap-seoul-1.oraclecloud.com/n/apackrsct01/b/bucket-20190614-1639/o/sshkeys.zip)을 다운로드 받습니다.
+Resource Manager에서 사용할 Terraform Configuration과 웹 애플리케이션 소스를 포함하는 Zip 패키지 파일 [mushop-basic-stack.zip](https://objectstorage.ap-seoul-1.oraclecloud.com/n/apackrsct01/b/bucket-20190614-1639/o/mushop-basic-stack.zip)을 다운로드 받습니다.
 
 <details>
 <summary>
