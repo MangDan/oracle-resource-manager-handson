@@ -34,24 +34,21 @@ Terraform과 Resource Manager를 활용하여 간단한 예제 (OCI에 Object St
 <i>PART1 따라하기</i>
 </summary>
 
-총 7개의 단계로 구성됩니다.  
+총 6개의 단계로 구성됩니다.  
 **STEP 1**: 샘플 Resource Manager Zip 패키지 다운로드  
-**STEP 2**: Resource Manager Zip 패키지 이해  
-**STEP 3**: OCI Console 로그인  
-**STEP 4**: Resource Manager Stack 생성  
-**STEP 5**: Resource Manager Plan Job 실행하여 실행 계획 확인  
-**STEP 6**: Resource Manager Apply Job 실행하여 인프라에 반영  
-**STEP 7**: Resource Manager Apply Destroy Job 실행하여 생성된 리소스 삭제 
+**STEP 2**: OCI Console 로그인  
+**STEP 3**: Resource Manager Stack 생성  
+**STEP 4**: Resource Manager Plan Job 실행하여 실행 계획 확인  
+**STEP 5**: Resource Manager Apply Job 실행하여 인프라에 반영  
+**STEP 6**: Resource Manager Apply Destroy Job 실행하여 생성된 리소스 삭제 
 
 ***
 
 ### STEP 1: 샘플 Resource Manager Zip 패키지 다운로드 
 Resource Manager에서 사용할 Terraform Configuration을 포함하는 Zip 패키지 파일 [oci-object-storage.zip](https://objectstorage.ap-seoul-1.oraclecloud.com/n/apackrsct01/b/bucket-20190614-1639/o/oci-object-storage.zip)을 다운로드 받습니다.
 
-### STEP 2: Resource Manager Zip 패키지 이해 
-내용을 확인하기 위해서 다운로드 받은 Zip 압축 파일을 압축 해제합니다. 구조는 다음과 같습니다. 
-> 실제 Resource Manager에서 사용할 경우는 압축된 Zip파일을 사용합니다.
-```
+Zip 패키지의 구조는 다음과 같습니다. HCL로 작성된 tf 파일들이 묶여 있는 것을 확인할 수 있습니다. tar.gz 파일은 Object Storage에 업로드 할 파일이며, .yaml 파일은 Oracle Resource Manager의 UI에서 변수의 값을 쉽게 할당해 주기 위한 포멧 입니다. (뒤에서 다시 설명)
+
 .
 ├── oci-object-storage.zip
 │   ├── provider.tf
@@ -63,6 +60,12 @@ Resource Manager에서 사용할 Terraform Configuration을 포함하는 Zip 패
 │   └── application.tar.gz
 └──
 ```
+
+### STEP 2: Resource Manager Zip 패키지 이해 
+내용을 확인하기 위해서 다운로드 받은 Zip 압축 파일을 압축 해제합니다. 구조는 다음과 같습니다. 
+> 실제 Resource Manager에서 사용할 경우는 압축된 Zip파일을 사용합니다.
+```
+
 
 <details>
 <summary>
@@ -94,12 +97,12 @@ Resource Manager에서 사용할 Terraform Configuration을 포함하는 Zip 패
 
 
 
-### **STEP 3**: OCI Console 로그인
+### **STEP 2**: OCI Console 로그인
 > https://console.ap-seoul-1.oraclecloud.com 접속 > Tenant 입력 > **Continue** 클릭 > Oracle Cloud Infrastructure 아래 사용자 이름(User Name)과 암호(Password) 입력 > **Sign In** 클릭
 
 ![](images/animated_gif/oci_console_login.gif)
 
-### **STEP 4**: Resource Manager Stack 생성
+### **STEP 3**: Resource Manager Stack 생성
 Terraform Configuration과 웹 애플리케이션 소스를 포함하고 있는 Zip 파일을 OCI Resource Manager Stack으로 등록하는 과정입니다.
 > Terraform HCL 파일의 묶음이라고 이해하면 됩니다. 이 Stack을 실행하는 과정은 Job이라는 용어를 사용합니다.
 
@@ -131,7 +134,7 @@ Terraform Configuration과 웹 애플리케이션 소스를 포함하고 있는 
 
     ![](images/animated_gif/oci_menu_create_os_stacks_2.gif)
 
-### **STEP 5**: Resource Manager Plan Job 실행하여 실행 계획 확인
+### **STEP 4**: Resource Manager Plan Job 실행하여 실행 계획 확인
 Terraform의 주요 Action에는 Plan, Apply, Destroy가 있습니다. 모든 액션은 Stack 단위로 이루어 집니다.
 
 **Plan**  
@@ -159,7 +162,7 @@ Terraform의 주요 Action에는 Plan, Apply, Destroy가 있습니다. 모든 �
 
 <font color="red">중요 참고) Log는 지속적으로 서버의 정보를 가져와 보여주도록 되어 있습니다. 이 과정에서 서버에 계속적인 요청이 가는데, 오랜 시간 로그 화면에 머물러 있을 경우 "" 라는 오류가 발생할 수 있습니다. 이는 리소스 생성 과정과 무관한 UI에 발생하는 Exception이므로 무시합니다. 다시 로그를 보고 싶으면 화면을 Refresh 합니다.</font>
 
-### **STEP 6**: Resource Manager Apply Job 실행하여 인프라에 반영
+### **STEP 5**: Resource Manager Apply Job 실행하여 인프라에 반영
 1. Terraform Configuration Apply Action
     > Terraform Actions > Apply 선택
 
@@ -179,7 +182,7 @@ Terraform의 주요 Action에는 Plan, Apply, Destroy가 있습니다. 모든 �
     ![](images/animated_gif/oci_rm_os_created.gif)
 
 
-### **STEP 7**: Resource Manager Apply Destroy Job 실행하여 생성된 리소스 삭제
+### **STEP 6**: Resource Manager Apply Destroy Job 실행하여 생성된 리소스 삭제
 1. Resource Manager Stack에서 Destroy를 통해 Stack으로 생성된 모든 리소스 삭제를 위한 Destroy Action 수행
 > Terraform Actions > Destroy
 
