@@ -161,7 +161,7 @@ Terraform의 주요 Action에는 Plan, Apply, Destroy가 있습니다. 모든 �
 
     ![](images/oci_rm_plan_job_complete.png)
 
-<font color="red">중요 참고) Log는 지속적으로 서버의 정보를 가져와 보여주도록 되어 있습니다. 이 과정에서 서버에 계속적인 요청이 가는데, 오랜 시간 로그 화면에 머물러 있을 경우 "" 라는 오류가 발생할 수 있습니다. 이는 리소스 생성 과정과 무관한 UI에 발생하는 Exception이므로 무시합니다. 다시 로그를 보고 싶으면 화면을 Refresh 합니다.</font>
+> 중요 참고) Log는 지속적으로 서버의 정보를 가져와 보여주도록 되어 있습니다. 이 과정에서 서버에 계속적인 요청이 가는데, 오랜 시간 로그 화면에 머물러 있을 경우 "요청이 너무 많다" 라는 오류가 발생할 수 있습니다. 이는 리소스 생성 과정과 무관한 UI에 발생하는 Exception이므로 무시합니다. 다시 로그를 보고 싶으면 화면을 Refresh 합니다.
 
 ### **STEP 5**: Resource Manager Apply Job 실행하여 인프라에 반영
 1. Terraform Configuration Apply Action
